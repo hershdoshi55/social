@@ -54,6 +54,8 @@ func (app *application) mount() *chi.Mux {
 				r.Delete("/", app.DeletePostHandler)
 				r.Patch("/", app.UpdatePostHandler)
 
+				r.Post("/comments", app.createCommentHandler)
+
 			})
 
 		})
