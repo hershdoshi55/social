@@ -2,9 +2,10 @@ package main
 
 import (
 	"encoding/json"
-	"net/http"
 	"github.com/go-playground/validator/v10"
+	"net/http"
 )
+
 var Validate *validator.Validate
 
 func init() {
@@ -29,7 +30,7 @@ func readJSON(w http.ResponseWriter, r *http.Request, data any) error {
 }
 
 func writeJSONError(w http.ResponseWriter, status int, message string) error {
-	type envelope struct{
+	type envelope struct {
 		Error string `json:"error"`
 	}
 	return writeJSON(w, status, &envelope{Error: message})
